@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Table from 'react-bootstrap/Table';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 function Appy() {
   const [transactions, setTransactions] = useState([]);
@@ -34,24 +35,27 @@ function Appy() {
 
   return (
     <div>
-         <Table striped bordered hover responsive="sm">          <tr>
-            <th>Transaction Hash</th>
-            <th>Block Number</th>
-            <th>Time</th>
-            <th>To</th>
-            <th>Value</th>
-          </tr>
-        <tbody>
+         <Table >     
+          <Thead>
+            <Tr>
+            <Th>Transaction Hash</Th>
+            <Th>Block Number</Th>
+            <Th>Time</Th>
+            <Th>To</Th>
+            <Th>Value</Th>
+          </Tr>
+          </Thead>     
+        <Tbody>
           {transactions.map((tx) => (
-            <tr key={tx.hash}>
-              <td>{tx.hash}</td>
-              <td>{tx.blockNumber}</td>
-              <td>{ConvertTimeStamp(tx.timeStamp)}</td>
-              <td>{SliceAddress(tx.to)}</td>
-              <td>{ConvertValue(tx.value)} BIT</td>
-            </tr>
+            <Tr key={tx.hash}>
+              <Td>{tx.hash}</Td>
+              <Td>{tx.blockNumber}</Td>
+              <Td>{ConvertTimeStamp(tx.timeStamp)}</Td>
+              <Td>{SliceAddress(tx.to)}</Td>
+              <Td>{ConvertValue(tx.value)} BIT</Td>
+            </Tr>
           ))}
-        </tbody>
+        </Tbody>
       </Table>
     </div>
   );
