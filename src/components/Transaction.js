@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import Table from 'react-bootstrap/Table';
 
 function Appy() {
   const [transactions, setTransactions] = useState([]);
@@ -33,18 +33,15 @@ function Appy() {
        // Only run once when the component mounts
 
   return (
-    <section className='border p-4 text-center mb-4'>
-         <MDBTable responsive='md'>
-      <MDBTableHead>       
-         <tr>
-            <th scope='row'>Transaction Hash</th>
-            <th scope='row'>Block Number</th>
-            <th scope='row'>Time</th>
-            <th scope='row'>To</th>
-            <th scope='row'>Value</th>
+    <div>
+         <Table striped bordered hover responsive="sm">          <tr>
+            <th>Transaction Hash</th>
+            <th>Block Number</th>
+            <th>Time</th>
+            <th>To</th>
+            <th>Value</th>
           </tr>
-          </MDBTableHead>
-      <MDBTableBody>
+        <tbody>
           {transactions.map((tx) => (
             <tr key={tx.hash}>
               <td>{tx.hash}</td>
@@ -54,9 +51,9 @@ function Appy() {
               <td>{ConvertValue(tx.value)} BIT</td>
             </tr>
           ))}
-         </MDBTableBody>
-    </MDBTable>
-    </section>
+        </tbody>
+      </Table>
+    </div>
   );
 }
 
