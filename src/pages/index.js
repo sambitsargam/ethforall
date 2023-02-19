@@ -70,8 +70,8 @@ const Home = ({ autoConnectEnabled = false, setAutoConnectEnabled = () => {}, se
 	return (
 		<div className="flex flex-col items-start min-h-screen py-2 justify-items-start">
 			<Head>
-				<title>Wallet Dashboard</title>
-				<link rel="icon" href="/favicon.ico" />
+				<title>MantleFolio</title>
+				<link rel="icon" href="./favicon.ico" />
 			</Head>
 
 			<main className="w-full max-w-full">

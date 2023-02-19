@@ -14,7 +14,7 @@ const Header = ({ siweSession, setSiweSession }) => {
         <header className="shadow-xl navbar bg-base-100">
 			<div className="flex-1">
 				<Link href="/" className="text-xl normal-case btn btn-ghost">
-					WalletDash
+					MantleFolio
 				</Link>
 			</div>
 			<div className="flex-none">
