@@ -13,38 +13,15 @@ import {
 	useContractEvent,
 } from 'wagmi';
 
-const MAINNET_CONTRAT = '0xb5fF82e2C9D087e1CD03f46c36dB3ab8F17D55d9';
-const GOERLI_CONTRACT = '0x30d2D684f3Ec6eA6FA00f4BCDF33460e46a1F9eB';
-const POLYGON_CONTRACT = '0x1D0BA6fBA707D7825510eD44BA0383d48C76f2cd';
-const POLYGON_MUMBAI_CONTRACT = '0x57c4383863eb8f7716F842e8D4208B9C7cfb3608';
-const ARBITRUM_ONE_CONTRACT = '0xfa51c2b728a3b7e076ce415f69180efb8ebac67b';
-const OPTIMISM_CONTRACT = '0x3779E8859146Aded8c985E629B3F8b838F6265ED';
+const CONTRACT = '0xf1849773a5e862f297bce5626a785d454f68800a';
 const contractAddressConfig = chainId => {
 	const config = {
-		1: {
-			name: 'mainnet',
-			address: MAINNET_CONTRAT,
+		
+		5001: {
+			name: 'mantle',
+			address: CONTRACT,
 		},
-		5: {
-			name: 'goerli',
-			address: GOERLI_CONTRACT,
-		},
-		10: {
-			name: 'optimism',
-			address: OPTIMISM_CONTRACT,
-		},
-		137: {
-			name: 'polygon',
-			address: POLYGON_CONTRACT,
-		},
-		80001: {
-			name: 'polygon-mumbai',
-			address: POLYGON_MUMBAI_CONTRACT,
-		},
-		42161: {
-			name: 'Arbitrum',
-			address: ARBITRUM_ONE_CONTRACT,
-		},
+	
 	};
 	return config[chainId] || false;
 };
