@@ -310,6 +310,7 @@ scale={10}
 							</div>
 						</div>
 						<div className="col-span-1 row-span-3 shadow-lg xl:col-span-3 card compact bg-base-100">
+							<h1 className="card-title text-blue-700"> Last 10 Transaction</h1>
 							<Appy
 />
                         </div>
