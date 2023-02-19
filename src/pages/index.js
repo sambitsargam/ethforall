@@ -6,6 +6,9 @@ import { Menu, Transition, Switch } from '@headlessui/react';
 import shortenAddress from '@/lib/shortenAddress';
 import useIsMounted from '@/lib/useIsMounted';
 import useFetchEthPrice from '@/lib/useFetchEthPrice';
+import Web3 from 'web3';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import {
 	useAccount,
 	useBalance,
@@ -48,10 +51,21 @@ const Home = ({ autoConnectEnabled = false, setAutoConnectEnabled = () => {}, se
 	const copyToClipboard = async () => {
 		await navigator.clipboard.writeText(address);
 	};
+    
+	const web3 = new Web3('https://rpc.testnet.mantle.xyz/');
+
 
 	const onChangeNetwork = async c => {
 		await switchNetworkAsync(c.id);
 	};
+	const [blockNumber, setBlockNumber] = useState(null);
+ useEffect(() => {
+ const getBlockNumber = async () => {
+ const num = await web3.eth.getBlockNumber();
+ setBlockNumber(num);
+ };
+ getBlockNumber();
+ }, []);
 
 	return (
 		<div className="flex flex-col items-start min-h-screen py-2 justify-items-start">
@@ -238,22 +252,12 @@ scale={10}
 										</h2>
 									)}
 									{isMounted && address && (
-										<h2 className="flex items-center card-title">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												className="w-6 h-6 mr-2 text-green-600"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-												/>
-											</svg>
-											Connected
+										<h2 className=" card-title">
+		
+											Current Block Number 
+							               <h1 className="text-blue-500">
+											{blockNumber}
+											</h1>
 										</h2>
 									)}
 								</div>
